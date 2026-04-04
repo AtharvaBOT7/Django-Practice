@@ -122,3 +122,11 @@ and after adding this, we need to change the link to our styles sheet which will
 ``` <link rel="stylesheet" href="{% static 'css/style.css' %}"> ```
 
 We set the static root variable inside the settings.py file to load all the static files for deployment purpose.
+
+### Django Apps 
+Django app is a python package specifically created to be used inside a Django project. It is a sub module of the project. Apps are used to keep the code separate and we can have multiple apps in one project.
+
+To create an app, we have to run this command ``` python manage.py startapp <app_name> ```
+I created an app named employees and after hitting enter, a new folder named employees is created outside of my project root directory. Inside that folder, we get the same initialized files which we got for the mysite folder. 
+
+Suppose we have different functionalities like login, ordering, support, chatbot, etc etc, then if there were no apps, we would have to maintain all the code under the same project root directory but using apps, we can keep all the functionalities separately so that it is easier for us to debug.
