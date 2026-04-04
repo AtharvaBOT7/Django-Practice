@@ -60,4 +60,13 @@ In this file we will have all the main configurations of our Django project.
 13. STATIC_URL: Whatever CSS, JS, Images we use on our website are called static files. We need to make special configurations to run the static files.
 
 ## How Django Works?
-Django follows MVT (Model View Template) pattern 
+Django follows MVT (Model View Template) software design pattern, in software development, design patterns are way of defining the rules of developing a software application.
+
+MODEL: It is related to each and every database operation. If we want to alter or access the database, we must call the model.
+TEMPLATE: It is basically the user facing frontend layout, the user communicates with the database through this frontend. It can be HTML or Bootstrap. It is the only thing that can be seen by the users in a Django application.
+VIEW: Acts as a gateway between the Model and the templates (basically tells the app (model) that I need something from the db). We define the logic inside the view. View cannot talk to the DB, for that we must need a model.
+
+In the views we define the URLs using the path function (Example: path('about/), views.about) here about/ is the endpoint and views.about is the function name. It simply means that inside the views module, we have the about function.
+
+### BASIC DJANGO FLOW
+A request comes in through the template and first it goes to the urls.py file (this file has all the routes/patterns listed) and from there is routed to the view function appropriately. View has the logic, for example if we want to fetch first and last name, we will tell the model the logic to fetch these items from the db and model will in return fetch this info and return it to the view and view will then return the data to template which will then be displayed to the user.
