@@ -93,3 +93,15 @@ Bootstrap is a responsive framework for designing intuitive webpages. Bootstrap 
 
 Step 1: We just go to getbootstrap.com and copy the 2 CDN links and paste it just above the head tag in our home.html code, this will include bootstrap in our project.
 Step 2: Then we will create a div tag and inside the div tag a container class and then we will paste the table code to see the styling automatically done by bootstrap.
+
+### Loading Static Files in Django
+Website generally need to serve additional files like Images, JS, HTML, CSS etc, we refer to those files as static files. 
+Suppose we want to server an image and an external css file. So what we do is create the css file and upload the image and then load it inside our html template.
+
+We create the static folder inside the root project directory, in our case we will create it inside "mysite" folder.
+
+Now the next step is to create images and css folders inside the static folder we just created. 
+Inside the images folder, we will upload a sample image. 
+
+Inside the syles folder, we will create style.css file and inside that for simplicity we will just list the background colour for now.
+After doing that, we will need to link our style.css file to our home.html file. We will just add ```   <link rel="stylesheet" href="css/style.css"> ``` to our html code just above the body before head tag ends.
