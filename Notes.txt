@@ -70,3 +70,7 @@ In the views we define the URLs using the path function (Example: path('about/),
 
 ### BASIC DJANGO FLOW
 A request comes in through the template and first it goes to the urls.py file (this file has all the routes/patterns listed) and from there is routed to the view function appropriately. View has the logic, for example if we want to fetch first and last name, we will tell the model the logic to fetch these items from the db and model will in return fetch this info and return it to the view and view will then return the data to template which will then be displayed to the user.
+
+Now if we run ```python manage.py runserver``` then we will find it running on localhot:8000, and if we try to access the /home slug / endpoint, it will return page not found error. So we will now create our first endpoint. 
+Step 1: First we will go to urls.py inside our project folder and register the endpoint "home/" there inside urlpatterns and we will give the function name as views.home and we will then have to import the views package from mysite.
+Step 2: Create a file named views.py inside mysite folder, inside that, we will define a simple function to return a HTTPResponse that we are on the home page.
