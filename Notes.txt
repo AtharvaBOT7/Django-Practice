@@ -5,9 +5,21 @@ We might face bugs when we write code manually and therefore it is better to use
 
 Features of Django:
 1. Excellent Documentation
-2. Secure 
+2. Secure and Scalable
 3. Fast and Simple
 4. SEO Friendly
-5. By default admin panel 
+5. By default admin panel  (CRUD)
 6. Extensive library support
 
+In Django we have something called ORM (Object Relational Mapping) which helps us write the relational DB queries and we dont have to manually write everything.
+
+Django uses PBKDF-2 (Password-Based Key Derivation Function 2) algorithm with SHA-256 hashing for encryption.
+
+The Django admin panel which helps to create, update and delete users in the db easily.
+
+## Creating first Django project
+
+Step 1: Run the command
+``` 
+django-admin startproject mysite .
+```
