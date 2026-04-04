@@ -1,4 +1,13 @@
 Django is a framework for Python.
 
-We use framework to make our work easy, for example if we want to build a login functionality, then there are multitude of ways we can do so but if we choose the traditional way without using the framework, then we will have to write everything from scratch manually therefore we use frameworks like Django to make our life easy as Django already has many in built functionalities which we can reuse.
+We use framework to make our work easy, for example if we want to build a login (DB, Permissions, Authentication etc etc) functionality, then there are multitude of ways we can do so but if we choose the traditional way without using the framework, then we will have to write everything from scratch manually therefore we use frameworks like Django to make our life easy as Django already has many in built functionalities which we can reuse.
+We might face bugs when we write code manually and therefore it is better to use the pre defined functions within the frameowrks as they are secure and scalable too.
+
+Features of Django:
+1. Excellent Documentation
+2. Secure 
+3. Fast and Simple
+4. SEO Friendly
+5. By default admin panel 
+6. Extensive library support
 
