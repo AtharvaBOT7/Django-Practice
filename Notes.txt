@@ -75,3 +75,14 @@ Now if we run ```python manage.py runserver``` then we will find it running on l
 Step 1: First we will go to urls.py inside our project folder and register the endpoint "home/" there inside urlpatterns and we will give the function name as views.home and we will then have to import the views package from mysite. path('home/', views.home)
 Step 2: Create a file named views.py inside mysite folder, inside that, we will define a simple function to return a HTTPResponse that we are on the home page.
 BUT we have now created a separate endpoint called home but our main landing page should be home, so we will now set home as our landing page. But now we will remove the 'home/' endpoint from the path, so the new path will now be path('', views.home), this means that we will now access the home page as our landing page.
+
+We can have HTML tags inside the views file but it will then be very hard to maintain that file therefore we have templates.
+
+Step 3: We then create a folder named "templates" inside our root folder outside of our mysite folder.
+Step 4: Inside the templates folder, we create a file named home.html and copy our html code there and we update our views.py file to as follows:
+```
+def home(request):
+    return render(request, 'home.html')
+``` 
+
+Step 5: This is the last step now, we will go to settings.py and inside there, we have the templates list, inside that we have dirs variable, we will just list templates there.
