@@ -86,3 +86,7 @@ def home(request):
 ``` 
 
 Step 5: This is the last step now, we will go to settings.py and inside there, we have the templates list, inside that we have dirs variable, we will just list templates there.
+
+
+### Implementing Bootstrap in our Django Project
+Bootstrap is a responsive framework for designing intuitive webpages. Bootstrap gives us ready made things like forms, tables etc etc, but we need to map the classes correctly to CSS and HTML. To include bootstrap, we need to include CDN (Content Delivery Network) to our project.
