@@ -19,7 +19,45 @@ The Django admin panel which helps to create, update and delete users in the db 
 
 ## Creating first Django project
 
-Step 1: Run the command
+Step 1: Run the command below to start a project named mysite.
 ``` 
 django-admin startproject mysite .
 ```
+REMEMBER: mysite is the Project Level File Structure.
+This command will create a folder inside your project directory with the name mysite and it will also create a file named manage.py separately outside the mysite folder. Inside the mysite folder, you will see the following files: 
+- __init__.py: Helps us to make this folder as an importable package in python, so that we can reuse our code
+- asgi.py: (Asynchronous Server Gateway Interface) It is similar to wsgi file but comes with a few additional functionalities
+- settings.py: This is the most important file in a Django Project and it is used to add all the configurations of a Django project
+- urls.py: It contains all the endpoints which we might have for our website. It is used to provide the address of the resources. It basically tells the application if the user clicks this or wants to visit this resource, then direct them to this site, something like this. 
+- wsgi.py: (Web Server Gateway Interface) This is configured with the wsgi server and will help in deploying the application to production servers, it basically has the configurations for how the servers should interact with the web applications.
+
+These are the basic files required to run the Django project, so we can run our Django project now.
+
+Step 2: To run the Django development server, we will run the below command:
+```
+python manage.py runserver
+```
+After running this command, it will automatically create a file named db.sqlite3 if everything is successfully configured and db.sqlite3 is a in memory db initialized for our project.
+
+The manage.py is a command line utility which lets us communicate with the Django project in various ways.
+The mysite directory is the main project directory where our project files will reside.
+
+### BREAKING DOWN THE Settings.py file:
+In this file we will have all the main configurations of our Django project. 
+
+1. BASE_DIR: This is the base directory of our project 
+2. SECRET_KEY: This is the key which Django will generate on its own and it is used for hashing.
+3. DEBUG: This variable helps us to see the errors while developing but it should be turned off for Production.
+4. ALLOWED_HOSTS: This variable helps us for Domain settings. (IP settings)
+5. INSTALLED_APPS: These are all the installed apps that Django uses for business logic, any apps we create must be registered here for them to work.
+6. MIDDLEWARE: Every request coming into the application and every request going out from the application must pass through all the middleware layers, this is for security reasons.
+7. ROOT_URLCONF: This variable tells us that the URLs for this project are all listed out in the mysite/urls.py file.
+8. TEMPLATES: Responsible for frontend templates. 
+9. WSGI_APPLICATION: This has wsgi server configuration. 
+10. DATABASES: By default we are using sqlite3 database but we can edit to our needed database.
+11. AUTH_PASSWORD_VALIDATORS: These are the built in password validators which Django comes with by default. Used to check the strength of the user's password.
+12. Internationalization: Language code, timezone, it8n: Internationalization, tz: timezone, we can set all of this here.
+13. STATIC_URL: Whatever CSS, JS, Images we use on our website are called static files. We need to make special configurations to run the static files.
+
+## How Django Works?
+Django follows MVT (Model View Template) pattern 
