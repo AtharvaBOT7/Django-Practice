@@ -192,3 +192,12 @@ Running migrations:
   Applying employees.0001_initial... OK
 ```
 
+Now we can see all these changes in the admin panel that we created but to see that change, we will have to register that model in the employees/admin.py file.
+After this we will be able to see the employees table in the admin panel, we added a dummy user and added his picture but we cannot currently see the picture as we have not configured media uploads. In Django any file uploaded by the user is called media file.
+
+### Django Media Upload 
+Step 1: Now while creating the user, I uploaded the media file in the admin panel and I can now see the media file under images folder because we configured it that way, but now we can just delete the images folder. 
+
+Step 2: Create a new folder outside the project root called media, all the user uploaded file will be seen here. Now after uploading the image again on admin panel we will see an image folder inside the media folder and our image is uploaded there.
+
+
