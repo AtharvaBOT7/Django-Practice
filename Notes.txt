@@ -264,3 +264,9 @@ Now we updated the table code in home.html file:
   </tbody>
 </table>
 ```
+
+Now that we have displayed the data, we now want to show the complete data of our employees when we click on the full name of the employees. 
+First thing while adding a feature is we need to decide how the URL of that feature will look like, for displaying the employee data, we want to show something like employees/1 , where 1 is the primary key related to the employee.
+Therefore we need to add the below command in our urlpatterns list in mysite/urls.py file ``` path('employees/', include('employees.urls')),  ```
+
+In the project level directory, we will habe the urls.py file by default but in the app level directory, in our case employees folder will not have urls.py file by default, we will need to create that file manually in order to show the data in a separate page.
