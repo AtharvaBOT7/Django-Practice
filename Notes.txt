@@ -129,4 +129,66 @@ Django app is a python package specifically created to be used inside a Django p
 To create an app, we have to run this command ``` python manage.py startapp <app_name> ```
 I created an app named employees and after hitting enter, a new folder named employees is created outside of my project root directory. Inside that folder, we get the same initialized files which we got for the mysite folder. 
 
-Suppose we have different functionalities like login, ordering, support, chatbot, etc etc, then if there were no apps, we would have to maintain all the code under the same project root directory but using apps, we can keep all the functionalities separately so that it is easier for us to debug.
+Suppose we have different functionalities like login, ordering, support, chatbot, etc etc, then if there were no apps, we would have to maintain all the code under the same project root directory but using apps, we can keep all the functionalities separately so that it is easier for us to debug. Therefore we will create different apps for different features so that it will be easier for us to debug.
+
+Now that we have created the app named employees, it will create the following files by default:
+1. __init__.py: This tells the django project that this folder is a python package and can be imported anywhere inside the codebase.
+2. admin.py: It is used to display the DB data / model data inside the Django admin panel. For CRUD operations.
+3. apps.py: Used to app level configurations to the package.
+4. models.py: It contains the essentials fields and data that we are storing in the DB.
+5. tests.py: It is used to run any tests in the Django project.
+6. views.py: In this file we create business logic for that specific app.
+
+When we run any Django server, we will get this warning: 
+```
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+```
+to solve this error we run ``` python manage.py migrate ```. Django by default gives us some apps like admin, auth, contenttypes, sessions etc and these tables need to be created inside the database before us creating our own data and therefore by running the migrate command, we will have created those default database tables.
+
+Now we access the admin page. We will first need to craete superuser in Django to access the admin panel. For that, we will run ``` python manage.py createsupersuer ```
+On running this, Django will ask for username and password.
+
+Now we are able to access the backend of our Django project using the /admin slug and the username and password that we just created.
+
+We have the database by default and now we need to create tables and fields. So now inside our employees folder, we will navigate to models.py and there we will create our tables and fields.
+We create the table using the below command, inside employees/models.py 
+```
+from django.db import models
+
+class Employee(models.model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to='images')
+    designation = models.CharField(max_length=100)
+    email_address = models.EmailField(max_length=100, unique=True)
+    phone_number = models.CharField(max_length=15, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+```
+In this, we have photos and similar to the special settings for the static files, we have special settings for the image upload files.
+
+Once we have created the model, we need to migrate that. The first thing after creating an app is to add that appname in settings.py inside the main django project root folder, in our case it is mysite/settings.py file.
+
+### Migrations
+To create the tables in our Database, we need to run 2 commands:
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+After running makemigrations command, we see: 
+```
+Migrations for 'employees':
+  employees/migrations/0001_initial.py
+    + Create model Employee
+```
+So what makemigrations will do is look for any modifications in the models.py file and then create changes to the migrations file, it created 0001_initial.py file. The tables are not yet created, we have just generated the SQL commands for now.
+
+And now that we have generated the SQL commands, to run the commands, we will run the migrate command. After executing this, we will see:
+```
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, employees, sessions
+Running migrations:
+  Applying employees.0001_initial... OK
+```
+
