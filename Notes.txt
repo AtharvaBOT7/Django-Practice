@@ -231,3 +231,36 @@ def home(request):
 ```
 And we will add {{ employees }} to the home.html file, then we will see the employees displayed on the frontend.
 
+We are now using template tags inside the home.html file
+```
+{% for i in employees %}
+  <h4>{{ i }}</h4>
+{% endfor %}
+```
+We use the template tags when we want to use some logic inside the html file.
+
+### Showing data on the table
+Now we updated the table code in home.html file:
+```
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for employee in employees %}
+    <tr>
+      <th>{{ forloop.counter }}</th>
+      <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+      <td>{{ employee.designation }}</td>
+      <td>{{ employee.phone_number }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+```
