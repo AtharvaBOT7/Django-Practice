@@ -1,7 +1,7 @@
 Django is a framework for Python.
 
-We use framework to make our work easy, for example if we want to build a login (DB, Permissions, Authentication etc etc) functionality, then there are multitude of ways we can do so but if we choose the traditional way without using the framework, then we will have to write everything from scratch manually therefore we use frameworks like Django to make our life easy as Django already has many in built functionalities which we can reuse.
-We might face bugs when we write code manually and therefore it is better to use the pre defined functions within the frameowrks as they are secure and scalable too.
+We use frameworks to make our work easy, for example if we want to build a login (DB, Permissions, Authentication etc etc) functionality, then there are multitude of ways we can do so but if we choose the traditional way without using the framework, then we will have to write everything from scratch manually therefore we use frameworks like Django to make our life easy as Django already has many in built functionalities which we can reuse.
+We might face bugs when we write code manually and therefore it is better to use the pre defined functions within the frameworks as they are secure and scalable too.
 
 Features of Django:
 1. Excellent Documentation
@@ -24,11 +24,11 @@ Step 1: Run the command below to start a project named mysite.
 django-admin startproject mysite .
 ```
 REMEMBER: mysite is the Project Level File Structure.
-This command will create a folder inside your project directory with the name mysite and it will also create a file named manage.py separately outside the mysite folder. Inside the mysite folder, you will see the following files: 
+This command will create a folder inside your project directory with the name "mysite" and it will also create a file named manage.py separately outside the mysite folder. Inside the mysite folder, you will see the following files: 
 - __init__.py: Helps us to make this folder as an importable package in python, so that we can reuse our code
 - asgi.py: (Asynchronous Server Gateway Interface) It is similar to wsgi file but comes with a few additional functionalities
 - settings.py: This is the most important file in a Django Project and it is used to add all the configurations of a Django project
-- urls.py: It contains all the endpoints which we might have for our website. It is used to provide the address of the resources. It basically tells the application if the user clicks this or wants to visit this resource, then direct them to this site, something like this. 
+- urls.py: It contains all the endpoints which we might have for our website. It is used to provide the address of the resources. It basically tells the application if the user clicks this or wants to visit this resource, then direct them to this url, something like this. 
 - wsgi.py: (Web Server Gateway Interface) This is configured with the wsgi server and will help in deploying the application to production servers, it basically has the configurations for how the servers should interact with the web applications.
 
 These are the basic files required to run the Django project, so we can run our Django project now.
@@ -87,7 +87,6 @@ def home(request):
 
 Step 5: This is the last step now, we will go to settings.py and inside there, we have the templates list, inside that we have dirs variable, we will just list templates there.
 
-
 ### Implementing Bootstrap in our Django Project
 Bootstrap is a responsive framework for designing intuitive webpages. Bootstrap gives us ready made things like forms, tables etc etc, but we need to map the classes correctly to CSS and HTML. To include bootstrap, we need to include CDN (Content Delivery Network) to our project.
 
@@ -96,7 +95,7 @@ Step 2: Then we will create a div tag and inside the div tag a container class a
 
 ### Loading Static Files in Django
 Website generally need to serve additional files like Images, JS, HTML, CSS etc, we refer to those files as static files. 
-Suppose we want to server an image and an external css file. So what we do is create the css file and upload the image and then load it inside our html template.
+Suppose we want to serve an image and an external css file. So what we do is create the css file and upload the image and then load it inside our html template.
 
 We create the static folder inside the root project directory, in our case we will create it inside "mysite" folder.
 
@@ -270,3 +269,30 @@ First thing while adding a feature is we need to decide how the URL of that feat
 Therefore we need to add the below command in our urlpatterns list in mysite/urls.py file ``` path('employees/', include('employees.urls')),  ```
 
 In the project level directory, we will habe the urls.py file by default but in the app level directory, in our case employees folder will not have urls.py file by default, we will need to create that file manually in order to show the data in a separate page.
+
+Inside the employees/urls.py file, we will include urlpatterns list, for now we will do a dynamic value for the employee number, that means if we search for employees/1, it will display all the data related to that employee which we configured in employees/models.py file inside the Employee class. 
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('<int:pk>/', views.employee_detail)
+] 
+```
+and we are showing views.employee_detail, now we will have to define the function employee_detail inside employees/views.py file.
+
+Now while creating the function employee_detail, we will always pass request as a param and now that we have given pk as a param there, we will need to pass that too.
+```
+from django.shortcuts import render
+from employees.models import Employee
+from django.http import Http404
+
+# Create your views here.
+def employee_detail(request, pk):
+    try:
+        employee = Employee.objects.get(pk = pk)
+        print(employee)
+    except:
+        raise Http404("Employee does not exist")
+```
+This will run into an error because we are not returning any HTTPResponse.
