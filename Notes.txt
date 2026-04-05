@@ -205,3 +205,29 @@ Now whenever we login to our admin panel and see the employees table, we see the
 ### Fetching data from Database in Django
 Now that we have creted 2 demo records, we will see how do we actually fetch the data from database.
 
+We want the data to be printed on the homepage therefore we will navigate to mysite/views.py because we have configured our homepage there. 
+
+For that we will update the home function to this:
+```
+from employees.models import Employee
+
+def home(request):
+    employees = Employee.objects.all()
+    print(employees)
+    return render(request, 'home.html')
+```
+After executing that change, we will see this output in the terminal
+<QuerySet [<Employee: Sabo Onepiece>, <Employee: Ace OnePiece>]>
+
+But we dont want the data on the terminal we want it on the frontend, therefore we will need to send the employees vairable results to home.html because that is displaying our frontend.
+For that we will have to update our home function again:
+```
+def home(request):
+    employees = Employee.objects.all()
+    context = {
+        'employees': employees,
+    }
+    return render(request, 'home.html', context)
+```
+And we will add {{ employees }} to the home.html file, then we will see the employees displayed on the frontend.
+
