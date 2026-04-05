@@ -73,7 +73,7 @@ A request comes in through the template and first it goes to the urls.py file (t
 
 Now if we run ```python manage.py runserver``` then we will find it running on localhost:8000, and if we try to access the /home slug / endpoint, it will return page not found error. So we will now create our first endpoint. 
 Step 1: First we will go to urls.py inside our project folder and register the endpoint "home/" there inside urlpatterns and we will give the function name as views.home and we will then have to import the views package from mysite. path('home/', views.home)
-Step 2: Create a file named views.py inside mysite folder, inside that, we will define a simple function to return a HTTPResponse that we are on the home page.
+Step 2: Create a file named views.py inside mysite folder, inside that, we will define a simple function to return a HttpResponse that we are on the home page.
 BUT we have now created a separate endpoint called home but our main landing page should be home, so we will now set home as our landing page. But now we will remove the 'home/' endpoint from the path, so the new path will now be path('', views.home), this means that we will now access the home page as our landing page.
 
 We can have HTML tags inside the views file but it will then be very hard to maintain that file therefore we have templates.
@@ -295,4 +295,14 @@ def employee_detail(request, pk):
     except:
         raise Http404("Employee does not exist")
 ```
-This will run into an error because we are not returning any HTTPResponse.
+This will run into an error because we are not returning any HttpResponse.
+
+We will update the function employee_detail to return a HttpResponse:
+```
+def employee_detail(request, pk):
+    employee = get_object_or_404(Employee, pk=pk)
+    return HttpResponse(employee)
+```
+This will return the employee name related to the primary key of that employee.
+
+#### Rendering HTML page for employee/pk
