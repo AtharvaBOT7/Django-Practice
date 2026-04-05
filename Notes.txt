@@ -316,3 +316,7 @@ def employee_detail(request, pk):
     return render(request, 'employee_detail.html', context)
 ```
 
+We then added the Back to home button on the employee/pk page, to do that we added a button class inside the employee_detail.html file and then we put {% url 'home' %} inside the href tag inside the a tag. Then we went to mysite/urls.py and added a name field to the path of home, and set it as name='home' so that we can call this page using the syntax above.
+
+
+
