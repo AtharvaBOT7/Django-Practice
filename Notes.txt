@@ -201,3 +201,7 @@ Step 1: Now while creating the user, I uploaded the media file in the admin pane
 Step 2: Create a new folder outside the project root called media, all the user uploaded file will be seen here. Now after uploading the image again on admin panel we will see an image folder inside the media folder and our image is uploaded there.
 
 Now whenever we login to our admin panel and see the employees table, we see the name of employees as Employee object (1), this does not make it readable and therefore we must show it differently, therefore we update the models.py file where created the Employees table.
+
+### Fetching data from Database in Django
+Now that we have creted 2 demo records, we will see how do we actually fetch the data from database.
+
