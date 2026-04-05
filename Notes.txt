@@ -306,3 +306,13 @@ def employee_detail(request, pk):
 This will return the employee name related to the primary key of that employee.
 
 #### Rendering HTML page for employee/pk
+We will now update our return response and now say render, this means whenever employee_detail function is called, we will render the employee_detail.html page, we will create this page inside templates folder because we had earlier set that as our templates inside the mysite/settings.py file.
+```
+def employee_detail(request, pk):
+    employee = get_object_or_404(Employee, pk=pk)
+    context = {
+            'employee': employee
+    }
+    return render(request, 'employee_detail.html', context)
+```
+
